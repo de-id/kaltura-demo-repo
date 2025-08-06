@@ -42,8 +42,7 @@ const presenterInputByService = {
     source_url: 'https://create-images-results.d-id.com/DefaultPresenters/Emma_f/v1_image.jpeg',
   },
   clips: {
-    presenter_id: 'v2_public_alex@qcvo4gupoy',
-    driver_id: 'e3nbserss8',
+    presenter_id: 'v2_public_amber@Y5K02DLS4m',
   },
 };
 
@@ -425,7 +424,7 @@ function setStreamVideoElement(stream) {
 }
 
 function playIdleVideo() {
-  idleVideoElement.src = DID_API.service == 'clips' ? 'alex_v2_idle.mp4' : 'emma_idle.mp4';
+  idleVideoElement.src = DID_API.service == 'clips' ? 'amber_idle_video.mp4' : 'emma_idle.mp4';
 }
 
 function stopAllStreams() {
