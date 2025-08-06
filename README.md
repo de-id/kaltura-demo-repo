@@ -51,7 +51,7 @@ enableInterruptOption?: ['text', 'audio', 'click'],
 
 
 
-# Streaming Live Demo by D-ID
+# Input Streaming Live Demo by D-ID
 
 - (install express) Open a terminal in the folder and run - `npm install`
 - (add your API key) Edit the `api.json` inside the uncompressed folder and replace the emoji with your key
