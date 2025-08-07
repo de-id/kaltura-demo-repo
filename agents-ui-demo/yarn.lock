@@ -168,21 +168,21 @@
     "@babel/helper-string-parser" "^7.27.1"
     "@babel/helper-validator-identifier" "^7.27.1"
 
-"@d-id/agent-client@^2.1.0-beta.13":
-  version "2.1.0-beta.13"
-  resolved "https://registry.yarnpkg.com/@d-id/agent-client/-/agent-client-2.1.0-beta.13.tgz#477af4570befc3e5d44bd6036eee1fb69fe49a74"
-  integrity sha512-DITKAP2SnQIjANfDO/XxxTd+208hJfHGpE3tvUvLpety2MslRXJpk1jJJsWb9hGWA6vvOQlcTONea3EczVUcQw==
+"@d-id/agent-client@^2.0.9":
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/@d-id/agent-client/-/agent-client-2.0.9.tgz#590eb809edf65babccd74e1f672e969556c6a7ab"
+  integrity sha512-VtuT8z07fQvqJTk9RCcYS4YGcsF59HKZ9HSnA3R112tBwx1xcMqfAyZZRyXUWy6aGN9hflAHtWYzJFLldpxqPQ==
   dependencies:
-    "@d-id/client-sdk" "1.1.0-beta.27"
+    "@d-id/client-sdk" "1.1.5"
     "@datadog/browser-rum" "^6.6.3"
     "@sentry/browser" "^8.2.1"
     "@types/node" "^22.15.0"
     microsoft-cognitiveservices-speech-sdk "^1.42.0"
 
-"@d-id/client-sdk@1.1.0-beta.27":
-  version "1.1.0-beta.27"
-  resolved "https://registry.yarnpkg.com/@d-id/client-sdk/-/client-sdk-1.1.0-beta.27.tgz#6a0bb807cd0d841737851e4725da138926f163e8"
-  integrity sha512-hif1+gmPgjgUWzQcMI2PiLZf5302evj6xtnnQO902blTp78XuOK59XsxAzC1roYqq4jlPHe6lP4SzbShhREaWA==
+"@d-id/client-sdk@1.1.5":
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/@d-id/client-sdk/-/client-sdk-1.1.5.tgz#eff521e5064ab739dd0ae4d13c29b366927a2d3f"
+  integrity sha512-hxcIPB7qpJWmmfxVKJxmqhUBEzdNyy0eFdg9iMyN/8nXKA0xNP5vLinXHHboQo6x+G01JAB0FGhToR3vSJ9+Cw==
 
 "@datadog/browser-core@6.17.0":
   version "6.17.0"

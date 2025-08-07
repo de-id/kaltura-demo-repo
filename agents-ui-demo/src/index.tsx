@@ -49,10 +49,10 @@ const configs: Partial<Configurations> = {
   auth: getAuth({ token, username, password, clientKey }),
   agentId,
   track,
-  chatMode: ChatMode.Off,
+  chatMode: ChatMode.Functional,
   position,
   orientation,
-  showChatToggle: false,
+  showChatToggle: true,
 };
 
 init({ ...configs, ...props });
