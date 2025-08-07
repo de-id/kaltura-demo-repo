@@ -161,47 +161,6 @@ streamWordButton.onclick = async () => {
   }
 };
 
-const streamAudioButton = document.getElementById('stream-audio-button');
-streamAudioButton.onclick = async () => {
-  // Note : we use elevenlabs to stream pcm chunks, you can use any other provider
-  const elevenKey = DID_API.elevenlabsKey;
-  if (!elevenKey) {
-    const errorMessage = 'Please put your elevenlabs key inside ./api.json and restart..';
-    alert(errorMessage);
-    console.error(errorMessage);
-    return;
-  }
-  async function stream(text, voiceId = '21m00Tcm4TlvDq8ikWAM') {
-    const response = await fetch(
-      `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}/stream?output_format=pcm_16000`,
-      {
-        method: 'POST',
-        headers: { 'xi-api-key': elevenKey, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text, model_id: 'eleven_turbo_v2_5' }),
-        // Please see the list of available models here - https://docs.d-id.com/reference/tts-elevenlabs#%EF%B8%8F-voice-config
-      }
-    );
-
-    return response.body;
-  }
-
-  const streamText =
-    'This is a demo of the D-ID WebSocket Streaming API with audio PCM chunks. <break time="1s" /> Real-time video streaming is easy with D-ID';
-
-  const activeStream = await stream(streamText);
-  let i = 0;
-  // Note: PCM chunks
-  for await (const chunk of activeStream) {
-    // Imporatnt Note : 30KB is the max chunk size + keep max concurrent requests up to 300, adjust chunk size as needed
-    const splitted = splitArrayIntoChunks([...chunk], 10000); // chunk size: 10KB
-    for (const [_, chunk] of splitted.entries()) {
-      sendStreamMessage([...chunk], i++);
-    }
-  }
-  sendStreamMessage(Array.from(new Uint8Array(0)), i);
-  console.log('done', i);
-};
-
 const destroyButton = document.getElementById('destroy-button');
 destroyButton.onclick = async () => {
   const streamMessage = {
@@ -492,44 +451,4 @@ function sendMessage(ws, message) {
   } else {
     console.error('WebSocket is not open. Cannot send message.');
   }
-}
-
-function sendStreamMessage(input, index) {
-  const streamMessage = {
-    type: 'stream-audio',
-    payload: {
-      script: {
-        type: 'audio',
-        input,
-      },
-      config: {
-        stitch: true,
-      },
-      background: {
-        color: '#FFFFFF',
-      },
-      index, // Note : add index to track the order of the chunks (better performance), optional field
-      session_id: sessionId,
-      stream_id: streamId,
-      presenter_type: PRESENTER_TYPE,
-    },
-  };
-
-  sendMessage(ws, streamMessage);
-}
-
-function splitArrayIntoChunks(array, size) {
-  if (!Array.isArray(array)) {
-    throw new TypeError('Input should be an array');
-  }
-  if (typeof size !== 'number' || size <= 0) {
-    throw new TypeError('Size should be a positive number');
-  }
-
-  const result = [];
-  for (let i = 0; i < array.length; i += size) {
-    const chunk = array.slice(i, i + size);
-    result.push(chunk);
-  }
-  return result;
 }
